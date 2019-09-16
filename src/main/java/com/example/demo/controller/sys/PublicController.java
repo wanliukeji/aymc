@@ -47,9 +47,9 @@ public class PublicController {
     /*
      *视频
      */
-    @GetMapping("/video")
+    @GetMapping("/home")
     public String blog() {
-        return "video";
+        return "ay/home";
     }
 
     /**
@@ -57,9 +57,9 @@ public class PublicController {
      *
      * @return
      */
-    @GetMapping("/record")
+    @GetMapping("/img")
     public String record() {
-        return "record";
+        return "ay/imgModel";
     }
 
     /**
