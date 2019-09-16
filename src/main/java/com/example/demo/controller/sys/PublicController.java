@@ -31,7 +31,7 @@ public class PublicController {
      */
     @GetMapping("/login")
     public String login() {
-        return "login";
+        return "ay/login";
     }
 
     /**
