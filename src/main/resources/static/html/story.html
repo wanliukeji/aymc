@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html class="no-js css-menubar" lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml"
+      xmlns:on="http://www.w3.org/1999/xhtml">
+<head>
+    <title>视频</title>
+    <script src="/static/js/header.js"></script>
+    <script src="/static/js/vue.min.js"></script>
+    <script src="/static/js/vue-resource.min.js"></script>
+    <script src="/static/remarkUI/page/css/bootstrap.min.css"></script>
+    <link rel="stylesheet" href="/static/css/index.css"/>
+</head>
+<body class="animsition site-navbar-small " style="background-color: #f5f5f5;">
+<script src="/static/js/nav.js"></script>
+
+<div class="modal-div-body">
+    <div class="panel center-page" style="min-width: 1200px;">
+        <div class="panel-body" id="panel-body">
+            <div class="page-search-form" role="search">
+                <div class="input-search input-search-dark">
+                    <i class="input-search-icon wb-search" aria-hidden="true"></i>
+                    <input type="text" v-model="obj.context" @change="seach" class="form-control" id="inputSearch"
+                           name="search" placeholder="搜索........">
+                    <button type="button" class="input-search-close icon wb-close" aria-label="Close"></button>
+                </div>
+            </div>
+
+            <div class="row" data-plugin="masonry">
+                <div class="col-lg-2 col-sm-12 masonry-item" v-for="item in items">
+                    <!-- Widget With Video -->
+                    <div class="card card-shadow">
+                        <div class="card-header cover player p-0" data-plugin="plyr" data-toggle="modal"
+                             data-target="#examplePlay">
+                            <video :poster="item.p_path" controls crossorigin width="100%" style="cursor: pointer;">
+                                <source type="video/mp4" :src="item.v_path">
+                            </video>
+                        </div>
+                        <div class="card-block">
+                            <h3 class="card-title">片名：{{item.vname}}</h3>
+                            <p class="card-text">
+                                <small>上映时间：{{item.issueTime | formatDate}}</small>
+                            </p>
+                            <p class="card-text">
+                                导演：
+                                <small>{{item.direct}}</small>
+                            </p>
+                            <p class="card-text">
+                                演员：
+                                <small>{{item.actor}}</small>
+                            </p>
+                            <p class="card-text p-text">
+                                简介：{{item.context}}</p>
+
+                        </div>
+                        <div class="card-block clearfix">
+                            <div class="card-actions float-right">
+                                <a href="javascript:void(0)">
+                                    <i class="icon wb-share blue-900"></i>
+                                    <span>{{item.vshare}}</span>
+                                </a>
+                                <a href="javascript:void(0)">
+                                    <i class="icon wb-heart red-900"></i>
+                                    <span>{{item.vlike}}</span>
+                                </a>
+                                <a href="javascript:void(0)">
+                                    <i class="icon wb-chat yellow-900"></i>
+                                    <span>{{item.grade}}</span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- End Widget With Video -->
+                </div>
+            </div>
+            <nav class="center" style="margin-bottom: 10px; position: static;">
+                <ul class="pagination pagination-no-border">
+                    <li class="pagination-prev page-item">
+                        <a class="page-link" @click="prevSeach" style="cursor: pointer;">
+                            <span class="icon wb-chevron-left-mini"></span>
+                        </a>
+                    </li>
+
+                    <li class="pagination-items page-item disabled">
+                        <a class="page-link" style="cursor: pointer;">{{obj.pageNo == 0 ? '' : obj.pageNo}}</a>
+                    </li>
+
+                    <li class="pagination-items page-item" style="background-color: #39caff;">
+                        <a class="page-link" style="cursor: pointer;">{{obj.pageNo + 1}}</a>
+                    </li>
+
+                    <li class="pagination-items page-item disabled">
+                        <a class="page-link" style="cursor: pointer;">{{obj.pageNo + 2}}</a>
+                    </li>
+
+                    <li class="pagination-next page-item">
+                        <a class="page-link" style="cursor: pointer;" @click="nextSeach">
+                            <span class="icon wb-chevron-right-mini"></span>
+                        </a>
+                    </li>
+
+                    <li class="pagination-next page-item">
+                        <a class="page-link">
+                            当前第&nbsp;<b>{{obj.pageNo + 1}}</b>&nbsp;页
+                        </a>
+                    </li>
+                    <li class="pagination-next page-item">
+                        <a class="page-link">
+                            共&nbsp;<b>{{items.length}}</b>&nbsp;条
+                        </a>
+                    </li>
+                    <li class="pagination-next page-item">
+                        <a class="page-link">
+                            每页显示&nbsp;<b>{{total}}</b>&nbsp;条
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+<script src="/static/js/footbottom.js"></script>
+
+<div class="row row-lg" style="position: absolute; top:10px;">
+    <div class="col-xl-4 col-lg-6">
+        <div class="example-wrap">
+            <div class="example">
+                <!-- Modal -->
+                <div class="modal fade modal-fill-in" id="exampleModel" aria-hidden="false"
+                     aria-labelledby="exampleVideoIn" role="dialog" tabindex="-1">
+                    <div class="modal-dialog modal-simple">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                                <h4 class="modal-title" id="exampleModelTitle">视频信息</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-xl-12 form-group">
+                                        影视名称：<input type="text" class="form-control" v-model="info.vname">
+                                    </div>
+                                    <div class="col-xl-12 form-group">
+                                        上映时间：<input type="datetime-local" class="form-control"
+                                                    v-model="info.issueTime">
+                                    </div>
+                                    <div class="col-xl-12 form-group">
+                                        导演：<input type="text" class="form-control" v-model="info.direct">
+                                    </div>
+                                    <div class="col-xl-12 form-group">
+                                        主演：<input type="text" class="form-control" v-model="info.actor">
+                                    </div>
+                                    <div class="col-xl-12">
+                                        地区： <input type="text" class="form-control" v-model="info.address">
+                                    </div>
+                                    <div class="col-xl-12">
+                                        语言： <input type="text" class="form-control" v-model="info.language">
+                                    </div>
+                                    <div class="col-xl-12">
+                                        详情： <textarea class="form-control" rows="5" v-model="info.context"
+                                                      placeholder="请输入你视频信息...."></textarea>
+                                    </div>
+                                    <br>
+                                    <div class="col-xl-12">
+                                        视频文件：<input type="file" accept="video/mp4" name="v_file"
+                                                    @change="getFile($event)"/>
+                                    </div>
+                                    <div class="col-xl-12">
+                                        影视图片：<input type="file" accept="image/png,image/jpeg" name="p_file"
+                                                    @change="getFile($event)"/>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="modal-footer text-left">
+                                <button id="taskboardStageCreat" class="btn btn-primary waves-effect waves-classic"
+                                        data-dismiss="modal" type="button" @click="postSaveData">提交
+                                </button>
+                                <button id="taskboardStageCancel" class="btn btn-primary waves-effect waves-classic"
+                                        data-dismiss="modal" type="button">取消
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Modal -->
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4 col-lg-6">
+        <!-- Example Fill In -->
+        <div class="example-wrap">
+            <div class="example">
+                <!-- Modal -->
+                <div class="modal fade modal-fill-in" id="exampleUser" aria-hidden="false"
+                     aria-labelledby="exampleUser"
+                     role="dialog" tabindex="-1">
+                    <div class="modal-dialog modal-simple">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                                <h4 class="modal-title" id="exampleUserModalTitle">你的个人信息</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="row">
+                                        <div class="col-xl-12 form-group">
+                                            账号：<input type="text" class="form-control" name="firstName">
+                                        </div>
+                                        <div class="col-xl-12 form-group">
+                                            电话：<input type="email" class="form-control" name="lastName">
+                                        </div>
+                                        <div class="col-xl-12 form-group">
+                                            邮箱：<input type="email" class="form-control" name="email">
+                                        </div>
+                                        <div class="col-xl-12 form-group">
+                                            住址：<input type="email" class="form-control" name="email">
+                                        </div>
+                                        <div class="col-xl-12">
+                                            备注： <textarea class="form-control" rows="5"
+                                                          placeholder="Type your message"></textarea>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Modal -->
+            </div>
+        </div>
+        <!-- End Example Fill In -->
+    </div>
+    <div class="col-xl-4 col-lg-6">
+        <!-- Example Fill In -->
+        <div class="example-wrap">
+            <div class="example">
+                <!-- Modal -->
+                <div class="modal fade modal-fill-in" id="examplePlay" aria-hidden="false"
+                     aria-labelledby="examplePlay"
+                     role="dialog" tabindex="-1">
+                    <div class="modal-dialog modal-simple">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                            </div>
+                            <div class="modal-body" style="margin-top: 30%;">
+                                <video poster="/static/image/wechat.jpg" controls crossorigin width="100%"
+                                       style="cursor: pointer;">
+                                    <source type="video/mp4" src="/static/video/wodeloulan.mp4">
+                                    <track kind="captions" label="English" srclang="en"
+                                           src="//cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.en.vtt"
+                                           default>
+                                </video>
+                            </div>
+                            <div class="modal-footer" style="position: relative;">
+                                <div class="card-block">
+                                    <h3 class="card-title">片名：我的楼兰</h3>
+                                    <p class="card-text">
+                                        <small>发布时间：2019-1-17</small>
+                                    </p>
+                                    <p class="card-text">
+                                        演唱：
+                                        <small>云朵</small>
+                                    </p>
+                                    <p class="card-text">
+                                        唱片公司：
+                                        <small>新疆刀郎文化传媒</small>
+                                    </p>
+                                    <p class="card-text p-text">
+                                        歌词：云朵 - 我的楼兰 词：苏柳 曲：刀郎 想问沙漠借那一根曲线 缝件披风为你御寒 用肺腑去触摸你的灵魂 我就在那只火炉边取暖 想问姻缘借那一根红线
+                                        深埋生命血脉相连
+                                        用丝绸去润泽你的肌肤 我就在那个怀抱里缠绵
+                                    </p>
+                                    <a href="javascript:void(0)">全文</a>
+
+                                    <div class="card-block clearfix">
+                                        <div class="card-actions float-right">
+                                            <a href="javascript:void(0)">
+                                                <i class="icon wb-share"></i>
+                                                <span>999</span>
+                                            </a>
+                                            <a href="javascript:void(0)">
+                                                <i class="icon wb-heart"></i>
+                                                <span>999</span>
+                                            </a>
+                                            <a href="javascript:void(0)">
+                                                <i class="icon wb-chat"></i>
+                                                <span>999</span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Modal -->
+            </div>
+        </div>
+        <!-- End Example Fill In -->
+    </div>
+    <div class="col-xl-4 col-lg-6">
+        <!-- Example Fill In -->
+        <div class="example-wrap">
+            <div class="example">
+                <div class="modal fade modal-newspaper show" id="exampleHelp" aria-labelledby="exampleModalTitle"
+                     role="dialog" style="padding-right: 16px;">
+                    <div class="modal-dialog modal-simple">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                                <h4 class="modal-title">帮助</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p class="center-page">对于本网站有什么疑问或建议请联系通过QQ或这微信联系开发人员</p>
+                                <p class="center-page"><i class="icon bd-qq"></i> :1193227758 &nbsp;
+                                    <i class="icon bd-webchat"></i> :15957408879</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Example Fill In -->
+    </div>
+    <div class="col-xl-4 col-lg-6">
+        <!-- Example Fill In -->
+        <div class="example-wrap">
+            <div class="example">
+                <div class="modal fade modal-rotate-from-left show" id="exampleAbout"
+                     aria-labelledby="exampleModalTitle" role="dialog" tabindex="-1" style="padding-right: 16px;">
+                    <div class="modal-dialog modal-simple">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                                <h4 class="modal-title">关于我们</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p class="center-page">本站正在全力开发中......</p>
+                                <p class="center-page"><i class="icon bd-qq"></i> :1193227758 &nbsp;
+                                    <i class="icon bd-webchat"></i> :15957408879</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Example Fill In -->
+    </div>
+</div>
+
+<div class="site-action" data-toggle="modal" data-target="#exampleModel" data-plugin="actionBtn">
+    <button type="button" class="site-action-toggle btn-raised btn btn-success btn-floating waves-effect waves-classic">
+        <i class="icon wb-plus"></i>
+    </button>
+</div>
+
+<!-- Start Footer -->
+<script src="/static/js/footer.js"></script>
+<!-- end Footer -->
+<script src="/static/js/video.js"></script>
+</body>
+</html>

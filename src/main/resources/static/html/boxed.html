@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html class="no-js css-menubar" lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <title>视频</title>
+    <script src="/static/js/header.js"></script>
+    <script src="/static/js/vue.min.js"></script>
+    <script src="/static/js/vue-resource.min.js"></script>
+</head>
+<body class="animsition site-navbar-small ">
+<script src="/static/js/nav.js"></script>
+<!-- Start Page -->
+<div class="panel center-page" style="width: 90%;margin-left: 5%;">
+    <div class="panel-body" id="panel-body">
+        <div class="row" data-plugin="masonry" >
+            <div class="col-lg-3 col-sm-12 masonry-item" v-for="item in items" >
+                <!-- Widget With Video -->
+                <div class="card card-shadow">
+                    <div class="card-header cover player p-0" data-plugin="plyr">
+                        <video :poster="item.p_path" controls crossorigin width="100%">
+                            <source type="video/mp4" :src="item.v_path">
+                            <track kind="captions" label="English" srclang="en"
+                                   src="//cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.en.vtt"
+                                   default>
+                        </video>
+                    </div>
+                    <div class="card-block">
+                        <h3 class="card-title">片名：{{item.vname}}</h3>
+                        <p class="card-text">
+                            <small>上映时间：{{item.issueTime}}</small>
+                        </p>
+                        <p class="card-text">
+                            导演： <small>{{item.direct}}</small>
+                        </p>
+                        <p class="card-text">
+                            演员：<small>{{item.actor}}</small>
+                        </p>
+                        <p class="card-text p-text">
+                            简介：{{item.context}}</p>
+                        <a href="javascript:void(0)">全文</a>
+
+                    </div>
+                    <div class="card-block clearfix">
+                        <div class="card-actions float-right">
+                            <a href="javascript:void(0)">
+                                <i class="icon wb-share"></i>
+                                <span>{{item.vshare}}</span>
+                            </a>
+                            <a href="javascript:void(0)">
+                                <i class="icon wb-heart"></i>
+                                <span>{{item.vlike}}</span>
+                            </a>
+                            <a href="javascript:void(0)">
+                                <i class="icon wb-chat"></i>
+                                <span>{{item.grade}}</span>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Widget With Video -->
+            </div>
+        </div>
+        <nav class="center">
+            <ul data-plugin="paginator" data-total="50" data-skin="pagination-no-border"></ul>
+        </nav>
+    </div>
+</div>
+<!-- End Page -->
+<!--Site-Action-->
+<<div class="site-action" data-toggle="modal" data-target="#exampleVideoIn" data-plugin="actionBtn">
+    <button type="button" class="site-action-toggle btn-raised btn btn-success btn-floating waves-effect waves-classic">
+        <i class="icon wb-plus"></i>
+    </button>
+</div>
+<!--Site-Action-->
+<div class="col-xl-4 col-lg-6">
+    <div class="example-wrap">
+        <div class="example">
+            <!-- Modal -->
+            <div class="modal fade modal-fill-in" id="exampleVideoIn" aria-hidden="false" aria-labelledby="exampleVideoIn" role="dialog" tabindex="-1">
+                <div class="modal-dialog modal-simple">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">×</span>
+                            </button>
+                            <h4 class="modal-title" id="exampleVideoInTitle">视频信息</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <!--<div class="col-xl-12">-->
+                                    <!--视频文件：<input type="file" accept="video/mp4" name="v_file" @change="getFile($event)" />-->
+                                    <!--<div>{{ v_result }}</div><div v-show="v_uping==1">正在上传中</div>-->
+                                <!--</div>-->
+                                <!--<br>-->
+                                <div class="col-xl-12">
+                                    影视图片：<input type="file" accept="image/png,image/jpeg" name="p_file" @change="getFile($event)" />
+                                    <div>{{ p_result }}</div><div v-show="p_uping==1">正在上传中</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer text-left">
+                            <button id="taskboardStageCreat" class="btn btn-primary waves-effect waves-classic" data-dismiss="modal" type="button" v-on:click="postSaveData">提交</button>
+                            <button id="taskboardStageCancel" class="btn btn-primary waves-effect waves-classic" data-dismiss="modal" type="button">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Modal -->
+        </div>
+    </div>
+</div>
+<!-- Start Footer -->
+<script src="/static/js/footer.js"></script>
+<!-- end Footer -->
+<!--show-satrt-->
+<!--show-end-->
+</body>
+</html>
+<script src="/static/js/video.js"></script>

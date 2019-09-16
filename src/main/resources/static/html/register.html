@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html class="no-js css-menubar" lang="en">
+<head>
+    <title>注册</title>
+    <script src="/static/js/header.js"></script>
+</head>
+<body class="animsition page-register layout-full page-dark">
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
+<!-- Page -->
+<div class="page vertical-align text-center" id="panel-body" data-animsition-in="fade-in" data-animsition-out="fade-out">
+    <div class="page-content vertical-align-middle animation-slide-top animation-duration-1">
+        <div class="brand">
+            <h2 class="brand-text">注册账户</h2>
+        </div>
+        <p>请填写真实信息</p>
+        <div role="form" action="/blog">
+            <div class="form-group">
+                <label class="sr-only" for="inputName">账号</label>
+                <input type="text" class="form-control" id="inputName" name="name" v-model="info.account" placeholder="账号">
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="inputEmail">邮箱</label>
+                <input type="email" class="form-control" id="inputEmail" name="email" v-model="info.email" placeholder="邮箱">
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="inputPassword">密码</label>
+                <input type="password" class="form-control" id="inputPassword" name="password" v-model="info.password"
+                       placeholder="密码">
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="inputPasswordCheck">确认密码</label>
+                <input type="password" class="form-control" id="inputPasswordCheck" v-model="info.pwd" name="passwordCheck"
+                       placeholder="确认密码">
+            </div>
+            <button type="button" class="btn btn-primary btn-block" @click="submit">注册</button>
+            <br>
+            <a href="/video">
+                <button type="button" class="btn btn-primary btn-block">游客进入</button>
+            </a>
+        </div>
+        <p>已有账户?&nbsp; 现在登录 <a href="/login"><b style="font-size: 22px;">登录</b></a></a></p>
+
+        <footer class="page-copyright page-copyright-inverse">
+            <p>© 2019. 陈育</p>
+            <p>
+                <i class="icon bd-qq" aria-hidden="true"></i>：1095787169
+                &nbsp;
+                <i class="icon bd-webchat" aria-hidden="true"></i>：15957408879
+            </p>
+            <div class="social">
+                <a class="btn btn-icon btn-pure" href="javascript:void(0)">
+                    <i class="icon bd-qq" aria-hidden="true"></i>
+                </a>
+                <a class="btn btn-icon btn-pure" href="javascript:void(0)">
+                    <i class="icon bd-webchat" aria-hidden="true"></i>
+                </a>
+                <a class="btn btn-icon btn-pure" href="javascript:void(0)">
+                    <i class="icon bd-weibo" aria-hidden="true"></i>
+                </a>
+            </div>
+        </footer>
+    </div>
+</div>
+<audio src="/static/audio/guxiangdeyuanfengjing.mp3" autoplay>
+</audio>
+<script src="/static/js/footer.js"></script>
+<script src="/static/js/register.js"></script>
+</body>
+</html>

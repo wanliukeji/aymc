@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html class="no-js css-menubar" lang="en">
+<head>
+    <title>千灵</title>
+    <script src="/static/js/header.js"></script>
+    <style type="text/css">
+        body {
+            background-image: url('/static/image/timg.jpg');
+            background-size: 100%;
+        }
+    </style>
+</head>
+<body class="animsition page-error page-error-400 layout-full">
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+    your browser</a> to improve your experience.</p>
+<![endif]-->
+<div style="height: 400px;width: 3%;font-size: 35px;margin-left: 25%;font-weight: 800;color: black;
+        display: inline-block;font-family: 楷体;float: left;" id="code">我自问这辈子没做过坏事
+</div>
+<!-- Page -->
+<div class="page vertical-align text-center" data-animsition-in="fade-in" data-animsition-out="fade-out"
+     style="display: inline-block;float: left;width: 40%;">
+    <div class="page-content vertical-align-middle">
+<!--The ocean floor rises 5 miles to the shores-->
+        <video poster="/static/image/father.jpg" controls crossorigin width="100%"
+               style="cursor: pointer;height: 400px;" id="video" autoplay="autoplay">
+            <source type="video/mp4" src="/static/video/father.mp4">
+            <track kind="captions" label="Chinese" srclang="en"
+                   src="//cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.en.vtt"
+                   default>
+        </video>
+        <br>
+        <br>
+
+        <a class="btn btn-primary btn-round" href="/login">进入网站</a>
+        <a class="btn btn-primary btn-round" href="/vtable">进入后台</a>
+
+        <footer class="page-copyright page-copyright-inverse">
+            <p>© 2019. 陈育</p>
+            <p>
+                <i class="icon bd-qq" aria-hidden="true"></i>：1095787169
+                &nbsp;
+                <i class="icon bd-webchat" aria-hidden="true"></i>：15957408879
+            </p>
+            <div class="social">
+                <a class="btn btn-icon btn-pure" href="javascript:void(0)">
+                    <i class="icon bd-qq" aria-hidden="true"></i>
+                </a>
+                <a class="btn btn-icon btn-pure" href="javascript:void(0)">
+                    <i class="icon bd-webchat" aria-hidden="true"></i>
+                </a>
+                <a class="btn btn-icon btn-pure" href="javascript:void(0)">
+                    <i class="icon bd-weibo" aria-hidden="true"></i>
+                </a>
+            </div>
+        </footer>
+    </div>
+</div>
+<div style="height: 400px;width: 3%;font-size: 35px;margin-right: 25%;
+        display: inline-block;font-family: 楷体;float: left;font-weight: 800; color: black;"  id="code2">为何要被生活勒住喉咙
+</div>
+<!-- End Page -->
+<script src="/static/js/footer.js"></script>
+<script type="text/javascript">
+    var pre = document.getElementById("code");
+    var pre2 = document.getElementById("code2");
+    var text = pre.innerText;
+    var text2 = pre2.innerText;
+    var num = 0;
+
+    function run() {
+        pre.innerText = text.slice(0, num) + (num % 2 == 0 ? "" : "_");
+        pre2.innerText = text2.slice(0, num) + (num % 2 == 0 ? "" : "_");
+        if (++num <= text.length)
+            setTimeout(run, 500);
+    }
+
+    run();
+</script>
+</body>
+</html>

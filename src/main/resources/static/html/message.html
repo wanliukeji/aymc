@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html class="no-js css-menubar" lang="en" xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:v-on="http://www.w3.org/1999/xhtml">
+<head>
+    <title>档案</title>
+    <script src="/static/js/header.js"></script>
+    <script src="/static/js/vue.min.js"></script>
+    <script src="/static/js/vue-resource.min.js"></script>
+    <style type="text/css">
+       body  {
+            background-image: url('/static/image/timg.jpg');
+            background-size: 100%;
+        }
+    </style>
+</head>
+<body class="animsition site-navbar-small ">
+<!--导航栏-->
+<script src="/static/js/nav.js"></script>
+<!-- Page -->
+<div class="panel center-page" style="width: 70%;margin-left: 15%; margin-top: -40px;">
+    <div class="panel-body" id="panel-body">
+        <div class="page-search-form" role="search">
+            <div class="input-search input-search-dark">
+                <i class="input-search-icon wb-search" aria-hidden="true"></i>
+                <input type="text" class="form-control" id="inputSearch"
+                       name="search" placeholder="搜索聊天内容.......">
+                <button type="button" class="input-search-close icon wb-close" aria-label="Close"></button>
+            </div>
+        </div>
+
+        <!-- Panel -->
+        <div class="panel" id="chat">
+            <div class="panel-heading">
+                <h3 class="panel-title">
+                    <i class="icon wb-chat-text" aria-hidden="true"></i> 对话
+                </h3>
+                <div class="panel-actions panel-actions-keep">
+                    <div class="dropdown">
+                        <a class="panel-action" id="examplePanelDropdown" data-toggle="dropdown" href="#" aria-expanded="false" role="button"><i class="icon wb-more-vertical" aria-hidden="true"></i></a>
+                        <div class="dropdown-menu dropdown-menu-bullet dropdown-menu-right" aria-labelledby="examplePanelDropdown" role="menu">
+                            <a class="dropdown-item" href="/friends" role="menuitem"><i class="icon wb-users" aria-hidden="true"></i> 返回好友列表</a>
+                            <a class="dropdown-item" href="javascript:void(0)" role="menuitem"><i class="icon wb-print" aria-hidden="true"></i>打印聊天记录</a>
+                            <a class="dropdown-item" href="javascript:void(0)" role="menuitem"><i class="icon wb-share" aria-hidden="true"></i>分享聊天</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-body pb-0">
+                <div class="chats">
+                    <div class="chat">
+                        <div class="chat-avatar">
+                            <a class="avatar avatar-online" data-toggle="tooltip" href="#" data-placement="right" title="" data-original-title="June Lane">
+                                <img src="/static/image/wechat.jpg" alt="...">
+                                <i></i>
+                            </a>
+                        </div>
+                        <div class="chat-body">
+                            <div class="chat-content">
+                                <p>
+                                    早上好，
+                                    <br>你吃了早餐吗?
+                                </p>
+                                <time class="chat-time" datetime="2017-07-01T11:37">11:37:08 上午</time>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat">
+                        <div class="chat-avatar">
+                            <a class="avatar avatar-online" data-toggle="tooltip" href="#" data-placement="right" title="" data-original-title="June Lane">
+                                <img src="/static/image/wechat.jpg" alt="...">
+                                <i></i>
+                            </a>
+                        </div>
+                        <div class="chat-body">
+                            <div class="chat-content">
+                                <p>
+                                    还是你已经在上班的途中?
+                                </p>
+                                <time class="chat-time" datetime="2017-07-01T11:37">11:37:08 上午</time>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat chat-left">
+                        <div class="chat-avatar">
+                            <a class="avatar avatar-online" data-toggle="tooltip" href="#" data-placement="left" title="" data-original-title="Edward Fletcher">
+                                <img src="/static/image/wechat.jpg" alt="...">
+                                <i></i>
+                            </a>
+                        </div>
+                        <div class="chat-body">
+                            <div class="chat-content">
+                                <p>我是失业啦？</p>
+                                <time class="chat-time" datetime="2017-07-01T11:39">11:39:57 am</time>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat chat-left">
+                        <div class="chat-avatar">
+                            <a class="avatar avatar-online" data-toggle="tooltip" href="#" data-placement="left" title="" data-original-title="Edward Fletcher">
+                                <img src="/static/image/wechat.jpg" alt="...">
+                                <i></i>
+                            </a>
+                        </div>
+                        <div class="chat-body">
+                            <div class="chat-content">
+                                <p>还没有吃</p>
+                                <time class="chat-time" datetime="2017-07-01T11:39">11:39:57 上午</time>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat chat-left">
+                        <div class="chat-avatar">
+                            <a class="avatar avatar-online" data-toggle="tooltip" href="#" data-placement="left" title="" data-original-title="Edward Fletcher">
+                                <img src="/static/image/wechat.jpg" alt="...">
+                                <i></i>
+                            </a>
+                        </div>
+                        <div class="chat-body">
+                            <div class="chat-content">
+                                <p>哈哈</p>
+                                <time class="chat-time" datetime="2017-07-01T11:39">11:39:57 am</time>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="chat">
+                        <div class="chat-avatar">
+                            <a class="avatar avatar-online" data-toggle="tooltip" href="#" data-placement="right" title="" data-original-title="June Lane">
+                                <img src="/static/image/wechat.jpg" alt="...">
+                                <i></i>
+                            </a>
+                        </div>
+                        <div class="chat-body">
+                            <div class="chat-content">
+                                <p>
+                                    If necessary, please ask me.
+                                </p>
+                                <time class="chat-time" datetime="2017-07-01T11:40">11:40:10 am</time>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <form>
+                    <div class="input-group">
+                        <input type="text" class="form-control" placeholder="你有什么想说的吗?">
+                        <span class="input-group-btn">
+                      <button class="btn btn-primary" type="button">发送</button>
+                    </span>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <!-- End Panel -->
+    </div>
+</div>
+<!-- End Page -->
+<script src="/static/js/footer.js"></script>
+</body>
+</html>
+<script src="/static/js/record.js"></script>
+
+
+
+
+

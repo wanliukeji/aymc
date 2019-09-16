@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html class="no-js css-menubar" lang="en">
+<head>
+    <title>欢迎登录</title>
+    <script src="/static/js/header.js"></script>
+    <script src="/static/js/vue.min.js"></script>
+    <script src="/static/js/vue-resource.min.js"></script>
+</head>
+<body class="animsition page-login layout-full page-dark">
+<!--[if lt IE 8]>
+<p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+<![endif]-->
+<!-- Page -->
+<div class="page vertical-align text-center" data-animsition-in="fade-in" data-animsition-out="fade-out" id="panel-body">
+    <div class="page-content vertical-align-middle animation-slide-top animation-duration-1">
+        <div class="brand">
+            <h2 class="brand-text">登录</h2>
+        </div>
+        <p>请填写你的登录信息</p>
+        <form method="post" action="/video">
+            <div class="form-group">
+                <label class="sr-only" for="inputName">账号</label>
+                <input type="text" class="form-control" id="inputName" v-model="info.account" name="name" placeholder="账号">
+            </div>
+            <div class="form-group">
+                <label class="sr-only" for="inputPassword">密码</label>
+                <input type="password" class="form-control" id="inputPassword" v-model="info.password" name="password"
+                       placeholder="密码">
+            </div>
+            <div class="form-group clearfix">
+                <div class="checkbox-custom checkbox-inline checkbox-primary float-left">
+                    <input type="checkbox" id="inputCheckbox" name="remember">
+                    <label for="inputCheckbox">记住我</label>
+                </div>
+                <a class="float-right" href="forgot-password.html">忘记密码?</a>
+            </div>
+            <button type="button" class="btn btn-primary btn-block" @click="submit">登录</button>
+            <a href="/video">
+                <button type="button" class="btn btn-primary btn-block">游客进入</button>
+            </a>
+        </form>
+        <p>没有账号 ?&nbsp;现在创建 <a href="/register"><b style="font-size: 22px;">注册</b></a></p>
+
+        <footer class="page-copyright page-copyright-inverse">
+            <p class="font-size-18">© 2019. 陈育</p>
+            <p>
+                <i class="icon bd-qq" aria-hidden="true"></i>：1095787169
+                &nbsp;
+                <i class="icon bd-webchat" aria-hidden="true"></i>：15957408879
+            </p>
+            <div class="social">
+                <a class="btn btn-icon btn-pure" href="javascript:void(0)">
+                    <i class="icon bd-qq" aria-hidden="true"></i>
+                </a>
+                <a class="btn btn-icon btn-pure" href="javascript:void(0)">
+                    <i class="icon bd-webchat" aria-hidden="true"></i>
+                </a>
+                <a class="btn btn-icon btn-pure" href="javascript:void(0)">
+                    <i class="icon bd-weibo" aria-hidden="true"></i>
+                </a>
+            </div>
+        </footer>
+    </div>
+</div>
+<audio src="/static/audio/yuzhouwanchang.mp3" autoplay>
+</audio>
+<!-- End Page -->
+<script src="/static/js/footer.js"></script>
+<script src="/static/js/login.js"></script>
+
+</body>
+</html>

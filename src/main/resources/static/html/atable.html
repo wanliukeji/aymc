@@ -1,0 +1,469 @@
+<!DOCTYPE html>
+<html class="no-js css-menubar" lang="en" xmlns:v-on="http://www.w3.org/1999/xhtml"
+      xmlns:on="http://www.w3.org/1999/xhtml">
+<head>
+    <title>音乐</title>
+    <script src="/static/js/header.js"></script>
+    <script src="/static/js/vue.min.js"></script>
+    <script src="/static/js/vue-resource.min.js"></script>
+    <script src="/static/remarkUI/page/css/bootstrap.min.css"></script>
+    <style type="text/css">
+        body {
+            background-image: url('/static/image/timg.jpg');
+            background-size: 100%;
+        }
+    </style>
+</head>
+<body class="animsition site-navbar-small ">
+<script src="/static/js/tnav.js"></script>
+<!-- Start Page -->
+<div class="panel center-page" style="width: 80%;margin-left: 10%; margin-top: -40px;">
+    <div class="page-content" id="panel-body">
+        <div class="page-search-form" role="search">
+            <div class="input-search input-search-dark">
+                <i class="input-search-icon wb-search" aria-hidden="true"></i>
+                <input type="text" v-model="obj.context" v-on:change="seach" class="form-control" id="inputSearch"
+                       name="search" placeholder="搜索........">
+                <button type="button" class="input-search-close icon wb-close" aria-label="Close"></button>
+            </div>
+        </div>
+
+        <div class="panel" id="exampleReport" style="margin-top: -40px;">
+            <div class="panel-body">
+                <div class="panel-heading">
+                    <h4 class="panel-title">音频数据管理</h4>
+                    <div class="panel-actions">
+                        <button type="button" class="btn btn-floating btn-danger btn-sm" data-toggle="modal"
+                                data-target="#exampleModel"><i class="icon wb-plus" aria-hidden="true"></i></button>
+                    </div>
+                </div>
+                <div class="example-wrap">
+                    <div class="example">
+                        <div class="table-responsive">
+                            <table class="table table-hover" data-role="content" data-plugin="selectable"
+                                   data-row-selectable="true">
+                                <thead class="bg-blue-grey-100">
+                                <tr>
+                                    <th>
+                                        视频名称
+                                    </th>
+                                    <th>
+                                        简介
+                                    </th>
+                                    <th>
+                                        <i class="icon wb-heart" aria-hidden="true"></i>
+                                    </th>
+                                    <th>
+                                        <i class="icon wb-chat" aria-hidden="true"></i>
+                                    </th>
+                                    <th>
+                                        创建时间
+                                    </th>
+                                    <th>
+                                        操作
+                                    </th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                <tr class="active">
+                                    <td>
+                                        民工
+                                    </td>
+                                    <td>
+                                        讲诉一对父子进城打工经历的种种苦难....
+                                    </td>
+                                    <td>
+                                        <i class="icon wb-heart" aria-hidden="true"><span class="ml-5">5</span></i>
+                                    </td>
+                                    <td>
+                                        <i class="icon wb-chat" aria-hidden="true"><span class="ml-5">22</span></i>
+                                    </td>
+                                    <td>
+                                        <span>2019-02-9</span>
+                                    </td>
+                                    <td>
+                                        <a class="panel-action icon wb-edit blue-300" data-toggle="tooltip"
+                                           data-original-title="edit"
+                                           data-container="body" title="修改" style="cursor: pointer;"></a>
+                                        <a class="panel-action icon wb-trash red-900" data-toggle="tooltip"
+                                           data-original-title="edit"
+                                           data-container="body" title="删除" style="cursor: pointer;"></a>
+                                    </td>
+                                </tr>
+                                <tr class="active">
+                                    <td>
+                                        民工
+                                    </td>
+                                    <td>
+                                        讲诉一对父子进城打工经历的种种苦难....
+                                    </td>
+                                    <td>
+                                        <i class="icon wb-heart" aria-hidden="true"><span class="ml-5">5</span></i>
+                                    </td>
+                                    <td>
+                                        <i class="icon wb-chat" aria-hidden="true"><span class="ml-5">22</span></i>
+                                    </td>
+                                    <td>
+                                        <span>2019-02-9</span>
+                                    </td>
+                                    <td>
+                                        <a class="panel-action icon wb-edit blue-300" data-toggle="tooltip"
+                                           data-original-title="edit"
+                                           data-container="body" title="修改" style="cursor: pointer;"></a>
+                                        <a class="panel-action icon wb-trash red-900" data-toggle="tooltip"
+                                           data-original-title="edit"
+                                           data-container="body" title="删除" style="cursor: pointer;"></a>
+                                    </td>
+                                </tr>
+                                <tr class="active">
+                                    <td>
+                                        民工
+                                    </td>
+                                    <td>
+                                        讲诉一对父子进城打工经历的种种苦难....
+                                    </td>
+                                    <td>
+                                        <i class="icon wb-heart" aria-hidden="true"><span class="ml-5">5</span></i>
+                                    </td>
+                                    <td>
+                                        <i class="icon wb-chat" aria-hidden="true"><span class="ml-5">22</span></i>
+                                    </td>
+                                    <td>
+                                        <span>2019-02-9</span>
+                                    </td>
+                                    <td>
+                                        <a class="panel-action icon wb-edit blue-300" data-toggle="tooltip"
+                                           data-original-title="edit"
+                                           data-container="body" title="修改" style="cursor: pointer;"></a>
+                                        <a class="panel-action icon wb-trash red-900" data-toggle="tooltip"
+                                           data-original-title="edit"
+                                           data-container="body" title="删除" style="cursor: pointer;"></a>
+                                    </td>
+                                </tr>
+                                <tr class="active">
+                                    <td>
+                                        民工
+                                    </td>
+                                    <td>
+                                        讲诉一对父子进城打工经历的种种苦难....
+                                    </td>
+                                    <td>
+                                        <i class="icon wb-heart" aria-hidden="true"><span class="ml-5">5</span></i>
+                                    </td>
+                                    <td>
+                                        <i class="icon wb-chat" aria-hidden="true"><span class="ml-5">22</span></i>
+                                    </td>
+                                    <td>
+                                        <span>2019-02-9</span>
+                                    </td>
+                                    <td>
+                                        <a class="panel-action icon wb-edit blue-300" data-toggle="tooltip"
+                                           data-original-title="edit"
+                                           data-container="body" title="修改" style="cursor: pointer;"></a>
+                                        <a class="panel-action icon wb-trash red-900" data-toggle="tooltip"
+                                           data-original-title="edit"
+                                           data-container="body" title="删除" style="cursor: pointer;"></a>
+                                    </td>
+                                </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <nav class="center">
+            <ul class="pagination pagination-no-border">
+                <li class="pagination-prev page-item">
+                    <a class="page-link" @click="prevSeach" style="cursor: pointer;">
+                        <span class="icon wb-chevron-left-mini"></span>
+                    </a>
+                </li>
+
+                <li class="pagination-items page-item disabled">
+                    <a class="page-link" style="cursor: pointer;">{{obj.pageNo == 0 ? '' : obj.pageNo}}</a>
+                </li>
+
+                <li class="pagination-items page-item" style="background-color: #39caff;">
+                    <a class="page-link" style="cursor: pointer;">{{obj.pageNo + 1}}</a>
+                </li>
+
+                <li class="pagination-items page-item disabled">
+                    <a class="page-link" style="cursor: pointer;">{{obj.pageNo + 2}}</a>
+                </li>
+
+                <li class="pagination-next page-item">
+                    <a class="page-link" style="cursor: pointer;" @click="nextSeach">
+                        <span class="icon wb-chevron-right-mini"></span>
+                    </a>
+                </li>
+
+                <li class="pagination-next page-item">
+                    <a class="page-link">
+                        当前第&nbsp;<b>{{obj.pageNo + 1}}</b>&nbsp;页
+                    </a>
+                </li>
+                <li class="pagination-next page-item">
+                    <a class="page-link">
+                        共&nbsp;<b>{{items.length}}</b>&nbsp;条
+                    </a>
+                </li>
+                <li class="pagination-next page-item">
+                    <a class="page-link">
+                        每页显示&nbsp;<b>{{total}}</b>&nbsp;条
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
+    <footer class="site-footer">
+        <div class="site-footer-legal">© 2019 CopyRigth 陈育</div>
+        <div class="site-footer-right">
+            <i class="icon bd-qq"></i> :1193227758
+            &nbsp;
+            <i class="icon bd-webchat"></i> :15957408879
+        </div>
+    </footer>
+</div>
+
+<div class="row row-lg" style="position: absolute;">
+    <div class="col-xl-4 col-lg-6">
+        <div class="example-wrap">
+            <div class="example">
+                <!-- Modal -->
+                <div class="modal fade modal-fill-in" id="exampleAudioIn" aria-hidden="false"
+                     aria-labelledby="exampleAudioIn" role="dialog" tabindex="-1">
+                    <div class="modal-dialog modal-simple">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                                <h4 class="modal-title" id="exampleVideoInTitle">音频信息</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-xl-12 form-group">
+                                        音频名称：<input type="text" class="form-control" v-model="info.vname">
+                                    </div>
+                                    <div class="col-xl-12 form-group">
+                                        发布时间：<input type="datetime-local" class="form-control" v-model="info.issueTime">
+                                    </div>
+                                    <div class="col-xl-12 form-group">
+                                        主唱：<input type="text" class="form-control" v-model="info.direct">
+                                    </div>
+                                    <div class="col-xl-12 form-group">
+                                        唱片公司：<input type="text" class="form-control" v-model="info.actor">
+                                    </div>
+                                    <div class="col-xl-12">
+                                        语言： <input type="text" class="form-control" v-model="info.language">
+                                    </div>
+                                    <div class="col-xl-12">
+                                        简介： <textarea class="form-control" rows="5" v-model="info.context"
+                                                      placeholder="请输入你视频信息...."></textarea>
+                                    </div>
+                                    <br>
+                                    <div class="col-xl-12">
+                                        音频文件：<input type="file" accept="audio/AMR" name="a_file"
+                                                    @change="getFile($event)"/>
+                                    </div>
+                                    <div class="col-xl-12">
+                                        影视图片：<input type="file" accept="image/png,image/jpeg" name="p_file"
+                                                    @change="getFile($event)"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer text-left">
+                            <button id="taskboardStageCreat1" class="btn btn-primary waves-effect waves-classic"
+                                    data-dismiss="modal" type="button" v-on:click="postSaveData">提交
+                            </button>
+                            <button id="taskboardStageCancel2" class="btn btn-primary waves-effect waves-classic"
+                                    data-dismiss="modal" type="button">取消
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End Modal -->
+        </div>
+    </div>
+    <div class="col-xl-4 col-lg-6">
+        <!-- Example Fill In -->
+        <div class="example-wrap">
+            <div class="example">
+                <!-- Modal -->
+                <div class="modal fade modal-fill-in" id="exampleUser" aria-hidden="false" aria-labelledby="exampleUser"
+                     role="dialog" tabindex="-1">
+                    <div class="modal-dialog modal-simple">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                                <h4 class="modal-title" id="exampleUserModalTitle">你的个人信息</h4>
+                            </div>
+                            <div class="modal-body">
+                                <form>
+                                    <div class="row">
+                                        <div class="col-xl-12 form-group">
+                                            账号：<input type="text" class="form-control" name="firstName">
+                                        </div>
+                                        <div class="col-xl-12 form-group">
+                                            电话：<input type="email" class="form-control" name="lastName">
+                                        </div>
+                                        <div class="col-xl-12 form-group">
+                                            邮箱：<input type="email" class="form-control" name="email">
+                                        </div>
+                                        <div class="col-xl-12 form-group">
+                                            住址：<input type="email" class="form-control" name="email">
+                                        </div>
+                                        <div class="col-xl-12">
+                                            备注： <textarea class="form-control" rows="5"
+                                                          placeholder="Type your message"></textarea>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Modal -->
+            </div>
+        </div>
+        <!-- End Example Fill In -->
+    </div>
+    <div class="col-xl-4 col-lg-6">
+        <div class="example-wrap">
+            <div class="example">
+                <!-- Modal -->
+                <div class="modal fade modal-fill-in" id="exampleModel" aria-hidden="false"
+                     aria-labelledby="exampleModel" role="dialog" tabindex="-1">
+                    <div class="modal-dialog modal-simple">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                                <h4 class="modal-title" id="exampleModelTitle">音频信息</h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col-xl-12 form-group">
+                                        影视名称：<input type="text" class="form-control" v-model="info.vname">
+                                    </div>
+                                    <div class="col-xl-12 form-group">
+                                        上映时间：<input type="datetime-local" class="form-control" v-model="info.issueTime">
+                                    </div>
+                                    <div class="col-xl-12 form-group">
+                                        导演：<input type="text" class="form-control" v-model="info.direct">
+                                    </div>
+                                    <div class="col-xl-12 form-group">
+                                        主演：<input type="text" class="form-control" v-model="info.actor">
+                                    </div>
+                                    <div class="col-xl-12">
+                                        地区： <input type="text" class="form-control" v-model="info.address">
+                                    </div>
+                                    <div class="col-xl-12">
+                                        语言： <input type="text" class="form-control" v-model="info.language">
+                                    </div>
+                                    <div class="col-xl-12">
+                                        详情： <textarea class="form-control" rows="5" v-model="info.context"
+                                                      placeholder="请输入你视频信息...."></textarea>
+                                    </div>
+                                    <br>
+                                    <div class="col-xl-12">
+                                        音频文件：<input type="file" accept="audio/AMR" name="v_file"
+                                                    @change="getFile($event)"/>
+                                    </div>
+                                    <div class="col-xl-12">
+                                        影视图片：<input type="file" accept="image/png,image/jpeg" name="p_file"
+                                                    @change="getFile($event)"/>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="modal-footer text-left">
+                                <button id="taskboardStageCreat" class="btn btn-primary waves-effect waves-classic"
+                                        data-dismiss="modal" type="button" v-on:click="postSaveData">提交
+                                </button>
+                                <button id="taskboardStageCancel" class="btn btn-primary waves-effect waves-classic"
+                                        data-dismiss="modal" type="button">取消
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End Modal -->
+            </div>
+        </div>
+    </div>
+    <div class="col-xl-4 col-lg-6">
+        <!-- Example Fill In -->
+        <div class="example-wrap">
+            <div class="example">
+                <div class="modal fade modal-newspaper show" id="exampleHelp" aria-labelledby="exampleModalTitle"
+                     role="dialog" style="padding-right: 16px;">
+                    <div class="modal-dialog modal-simple">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                                <h4 class="modal-title">帮助</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p class="center-page">对于本网站有什么疑问或建议请联系通过QQ或这微信联系开发人员</p>
+                                <p class="center-page"><i class="icon bd-qq"></i> :1193227758 &nbsp;
+                                    <i class="icon bd-webchat"></i> :15957408879</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Example Fill In -->
+    </div>
+    <div class="col-xl-4 col-lg-6">
+        <!-- Example Fill In -->
+        <div class="example-wrap">
+            <div class="example">
+                <div class="modal fade modal-rotate-from-left show" id="exampleAbout"
+                     aria-labelledby="exampleModalTitle" role="dialog" tabindex="-1" style="padding-right: 16px;">
+                    <div class="modal-dialog modal-simple">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">×</span>
+                                </button>
+                                <h4 class="modal-title">关于我们</h4>
+                            </div>
+                            <div class="modal-body">
+                                <p class="center-page">本站正在全力开发中......</p>
+                                <p class="center-page"><i class="icon bd-qq"></i> :1193227758 &nbsp;
+                                    <i class="icon bd-webchat"></i> :15957408879</p>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End Example Fill In -->
+    </div>
+</div>
+
+<audio src="/static/audio/guxiangdeyuanfengjing.mp3" autoplay>
+</audio>
+<!-- Start Footer -->
+<script src="/static/js/footer.js"></script>
+<!-- end Footer -->
+<script src="/static/js/atable.js"></script>
+</body>
+</html>
