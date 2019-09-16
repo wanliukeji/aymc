@@ -41,7 +41,7 @@ public class PublicController {
      */
     @GetMapping("/register")
     public String register() {
-        return "register";
+        return "ay/register";
     }
 
     /*
